@@ -1,28 +1,28 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    template: `
+      <div class="text-center p-3">
+        <h1 class="btn-secondary text-white p-3">
+          {{ message }}
+        </h1>
+        <button class="btn btn-secondary" v-on:click="handleClick">
+          Wciśnij mnie
+        </button>
+      </div>`,
+    data: function () {
+      return {
+        counter: 0
+      }
+    },
+    methods: {
+      handleClick() {
+        this.counter++;
+      }
+    },
+    computed: {
+      message() {
+        return this.counter === 0 ? "Przycisk nie został wciśnięty" : `Liczba wciśnięć: ${this.counter}`;
+      }
+    }
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
